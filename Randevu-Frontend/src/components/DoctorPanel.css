@@ -1,0 +1,543 @@
+/* ======== Temel Değişkenler ======== */
+:root {
+  --blue: #3498db;
+  --blue-dark: #2980b9;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --red-dark: #c0392b;
+  --orange: #e67e22;
+  --orange-dark: #ca6f1e;
+  --gray-dark: #2c3e50;
+  --gray-light: #f2f2f2;
+  --btn-radius: 8px;
+}
+
+/* ======== Reset & Genel ======== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+}
+
+/* ======== Ortak Buton Stili ======== */
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* ======== Panel ======== */
+.doctor-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--gray-light);
+  z-index: 9999;
+  overflow-y: auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctor-name {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-align: center;
+  color: var(--gray-dark);
+}
+
+/* ======== Randevu ======== */
+.date-picker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.date-picker label {
+  margin-right: 10px;
+  font-weight: 500;
+}
+.date-picker input[type="date"] {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.appointments {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+.appointments ul {
+  display: contents;
+}
+
+/* ======== Randevu Kartı ======== */
+.appointment-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+.appointment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.appointment-card p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #34495e;
+}
+.appointment-card select {
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+/* ======== Butonlar ======== */
+.notes-button {
+  background-color: var(--blue);
+  color: white;
+}
+.notes-button:hover {
+  background-color: var(--blue-dark);
+}
+
+.cancel-button {
+  background-color: var(--red);
+  color: white;
+}
+.cancel-button:hover {
+  background-color: var(--red-dark);
+}
+.cancel-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.completed-button {
+  background-color: var(--green);
+  color: white;
+  cursor: not-allowed;
+}
+
+/* ======== Modal ======== */
+.notes-modal,
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+}
+.notes-content,
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.modal-content h3 {
+  margin-top: 0;
+}
+.modal-content button {
+  margin-top: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.modal-content button:hover {
+  background-color: #45a049;
+}
+
+/* ======== Toplu İptal ======== */
+.cancel-all-container {
+  margin: 10px 0;
+  text-align: right;
+}
+.cancel-all-button {
+  background-color: var(--orange);
+  color: white;
+}
+.cancel-all-button:hover {
+  background-color: var(--orange-dark);
+}
+.cancel-all-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* ======== Çıkış Butonu ======== */
+.logout-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px;
+}
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  border-radius: var(--btn-radius);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+/* ======== Admin Alanı ======== */
+.admin-section {
+  margin: 20px 0;
+  text-align: center;
+}
+.toggle-doctors-button,
+.add-doctor-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  padding: 10px 15px;
+}
+.toggle-doctors-button {
+  background-color: #00ff4c;
+  color: white;
+}
+.toggle-doctors-button:hover {
+  background-color: #0069d9;
+}
+.add-doctor-button {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+}
+.add-doctor-button:hover {
+  background-color: #218838;
+}
+
+/* ======== Doktor Kartları ======== */
+.doctor-cards-container,
+.doctors-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+.doctor-card {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+.doctor-photo {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid var(--blue);
+}
+.doctor-card h4 {
+  font-size: 20px;
+  color: var(--gray-dark);
+}
+.doctor-card p {
+  font-size: 15px;
+  color: #555;
+  word-break: break-word;
+}
+.delete-doctor-button {
+  margin-top: 8px;
+  background-color: var(--red);
+  color: white;
+}
+.delete-doctor-button:hover {
+  background-color: var(--red-dark);
+}
+
+/* ======== Üst Butonlar ======== */
+.top-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+.top-buttons button {
+  background-color: var(--blue);
+  color: white;
+  box-shadow: 0 3px 6px rgba(52, 152, 219, 0.4);
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.top-buttons button:hover {
+  background-color: var(--blue-dark);
+  box-shadow: 0 6px 12px rgba(41, 128, 185, 0.6);
+}
+
+/* ======== Sidebar ======== */
+.sidebar {
+  width: 240px;
+  background-color: #f0f4f8;
+  padding: 20px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.sidebar h3 {
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  color: #333;
+}
+.sidebar button {
+  padding: 10px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  color: white;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ======== Sidebar Renkleri ======== */
+.btn-blue { background-color: #90b4d4; }
+.btn-blue:hover { background-color: #7aa3c6; }
+
+.btn-green { background-color: #8fbfa0; }
+.btn-green:hover { background-color: #7aac8c; }
+
+.btn-orange { background-color: #e6b980; }
+.btn-orange:hover { background-color: #d3a96f; }
+
+.btn-red { background-color: #d88c8c; }
+.btn-red:hover { background-color: #c77b7b; }
+
+.btn-purple { background-color: #b9a2d8; }
+.btn-purple:hover { background-color: #a68fcc; }
+
+/* ======== İçerik Alanı ======== */
+.main-content {
+  margin-left: 260px;
+  padding: 20px;
+}
+
+/* ======== Admin Ayar Butonları ======== */
+.update-price-button,
+.toggle-admin-button {
+  margin-top: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 6px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+.update-price-button {
+  background-color: var(--blue);
+  color: white;
+}
+.update-price-button:hover:not(:disabled) {
+  background-color: var(--blue-dark);
+}
+.toggle-admin-button {
+  background-color: #f39c12;
+  color: white;
+}
+.toggle-admin-button:hover:not(:disabled) {
+  background-color: #d68910;
+}
+
+/* ======== Mobil Uyum ======== */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 10px;
+  }
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+  }
+  .doctor-panel {
+    padding: 20px;
+  }
+  .appointments {
+    grid-template-columns: 1fr;
+  }
+}
+/* Panel Açılış Animasyonu */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.doctor-panel {
+  /* ...mevcut stiller */
+  animation: slideFadeIn 0.4s ease-out;
+}
+
+/* ... önceki tüm kodların devamı ... */
+
+/* ======== Notlar Modalı (GÜNCELLENDİ) ======== */
+.notes-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  backdrop-filter: blur(4px);
+}
+
+.notes-modal-content {
+  background: #ffffff;
+  padding: 24px 32px;
+  border-radius: 16px;
+  width: 420px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideUp 0.3s ease;
+}
+
+.notes-modal-content h3 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  color: var(--gray-dark);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 8px;
+}
+
+.notes-modal-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notes-modal-content li {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  animation: fadeInNote 0.3s ease;
+}
+
+.notes-modal-content li p {
+  margin: 4px 0;
+  color: #333;
+  font-size: 15px;
+}
+
+.notes-modal-content li small {
+  color: #888;
+  font-size: 12px;
+  display: block;
+  margin-top: 4px;
+}
+
+.close-modal-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: var(--blue);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.close-modal-button:hover {
+  background-color: var(--blue-dark);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInNote {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+

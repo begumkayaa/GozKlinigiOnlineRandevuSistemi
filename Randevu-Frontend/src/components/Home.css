@@ -1,0 +1,157 @@
+/* Header kısmı */
+.main-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Logo - Menü - Profil ikonunu düzgün hizalar */
+  padding: 20px 30px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  height: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 30px;
+}
+
+/* Menü */
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin: 0 20px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: rgb(8, 8, 8);
+  font-weight: 500;
+}
+
+.menu-item:hover {
+  color: #007bff;
+}
+
+/* Giriş / Üye ol linki */
+.login-link {
+  margin-right: 30px;
+  text-decoration: none;
+  color: rgb(8, 8, 8);
+  font-weight: 500;
+}
+
+.login-link:hover {
+  color: #007bff;
+}
+
+/* Profil ikonu ve menüsü */
+.profile-wrapper {
+  position: relative;
+  margin-right: 30px;
+}
+
+.profile-icon {
+  font-size: 12px;  /* İkon boyutunu küçültüyoruz */
+  cursor: pointer;
+  padding: 4px;  /* İkon etrafındaki boşluğu azaltıyoruz */
+  border-radius: 50%;  /* Yuvarlak şekil için */
+  background-color: transparent;  /* Arka plan rengini kaldırıyoruz */
+  transition: background-color 0.3s ease;
+}
+
+
+
+
+.profile-icon:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.profile-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.profile-menu button {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 8px 12px;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+}
+
+.profile-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Arka plan video */
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+/* Tanıtım yazısı */
+.hero-text {
+  position: absolute;
+  top: 45%;
+  left: 8%;
+  transform: translateY(-50%);
+  color: black;
+  max-width: 600px;
+  z-index: 10;
+  font-family: 'Segoe UI', sans-serif;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+.hero-text h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Atatürk alıntısı */
+.atatürk-quote {
+  margin-top: 20px;
+  font-size: 21px !important;
+  font-style: italic;
+  color: black;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,125 @@
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    height: 70px;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-left: 30px;
+  }
+  
+  .main-nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+  }
+  
+  .main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .main-nav li {
+    margin: 0 20px;
+  }
+  
+  .menu-item {
+    text-decoration: none;
+    color: rgb(8, 8, 8);
+    font-weight: 500;
+  }
+  
+  .menu-item:hover {
+    color: #007bff;
+  }
+  
+  .profile-wrapper {
+    position: relative;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column; /* Menü öğelerini dikey olarak hizalayalım */
+    justify-content: center; /* İçeriği dikey olarak ortalayalım */
+  }
+  
+  .profile-icon {
+    font-size: 12px; /* İkon boyutunu küçültüyoruz */
+    cursor: pointer;
+    padding: 4px; /* İkon etrafındaki boşluğu azaltıyoruz */
+    border-radius: 50%; /* Yuvarlak şekil için */
+    background-color: transparent; /* Arka plan rengini kaldırıyoruz */
+    transition: background-color 0.3s ease;
+  }
+  
+  .profile-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .profile-menu {
+    position: absolute;
+    top: 45px; /* Menü aşağı kaymış olacak */
+    right: 0;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 12px 0;
+    z-index: 1000;
+    min-width: 220px;
+    animation: fadeIn 0.25s ease-in-out;
+  }
+  
+  .profile-menu button {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    padding: 12px 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .profile-menu button:hover {
+    background-color: #f8f9fa;
+    color: #007bff;
+    font-weight: 500;
+    border-left: 3px solid #007bff;
+  }
+  
+  /* Fade in animasyon */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .profile-wrapper .profile-menu button {
+    margin-top: 8px; /* Menü öğelerinin arasına biraz boşluk ekliyoruz */
+  }
+  
+  
